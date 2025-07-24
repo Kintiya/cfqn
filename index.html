@@ -129,15 +129,13 @@ function type() {
     if (charIndex < currentWord.length) {
       target.innerHTML += currentWord.charAt(charIndex);
       charIndex++;
-      // Скорость печати буквы: вычислим так, чтобы все буквы слова печатались за ~1 секунду
-      const speed = 1000 / currentWord.length;
-      setTimeout(type, speed);
+      setTimeout(type, 100); // 100 мс на каждую букву — скорость печати
     } else {
-      // После слова ставим пробел и перенос строки
+      // После слова — перенос строки
       target.innerHTML += '<br>';
       wordIndex++;
       charIndex = 0;
-      setTimeout(type, 300); // Пауза после слова, чуть меньше 1 сек
+      setTimeout(type, 200); // Пауза 200 мс перед следующим словом
     }
   }
 }
