@@ -117,18 +117,25 @@ SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYyLjAuMTAwAAAAAAAAAAAAAAD/82TEABowfegLQxAAoEAE
 
 <script>
   const text = "[Зашифрованное сообщение] | Источник: Альянс Систем | Приоритет: Ультра-Класс Командир Илья. Связь с объектами класса N7 была внезапно прервана. Идентифицировано: утрата 5 контейнеров критической важности. Ваша задача — восстановить каждый из модулей. Вы получите сообщения по мере приближения к точкам активации. Подтвердите приказ. Да начнётся операция 'Протест системы'.";
-
+const words = text.split(' ');
 const target = document.getElementById('typed-text');
-let index = 0;
+let wordIndex = 0;
+let charIndex = 0;
 
 function type() {
-  if (index < text.length) {
-    const char = text.charAt(index);
-    target.innerHTML += char;
-    index++;
+  if (wordIndex < words.length) {
+    let currentWord = words[wordIndex];
 
+    if (charIndex < currentWord.length) {
+      target.innerHTML += currentWord.charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 100); // 100 мс на каждую букву — скорость печати
     } else {
-      setTimeout(type, 100); // скорость 100 мс на букву
+      // После слова — перенос строки
+      target.innerHTML += '<br>';
+      wordIndex++;
+      charIndex = 0;
+      setTimeout(type, 200); // Пауза 200 мс перед следующим словом
     }
   }
 }
