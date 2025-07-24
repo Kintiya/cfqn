@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-<link rel="stylesheet" href="style.css" />
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mass Effect: Протест системы</title>
@@ -14,7 +14,7 @@
 <body>
   <div class="container">
     <h1>Mass Effect: Протест системы</h1>
-    <p><strong>Альянс сообщает:</strong> Командир Илья, система потеряла 5 контейнеров N7. Ваша миссия — восстановить каждый модуль. Подтвердите приказ и начните активацию.</p>
+    <p id="typed-text"></p>
 
 <div class="mission" id="lvl1">
   <div class="mission-title">УРОВЕНЬ 1: Биометрическая авторизация</div>
@@ -81,7 +81,7 @@ SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYyLjAuMTAwAAAAAAAAAAAAAAD/82TEABowfegLQxAAoEAE
 </div>
 
 <div class="footer">
-  <p>Mass Effect™ Fan Quest • Навигатор Миссии | Created by Ты ❤️</p>
+  <p>Mass Effect™ Fan Quest • Навигатор Миссии | Created by Kintiya An. ❤️</p>
 </div>
 
 <script>
@@ -97,5 +97,23 @@ SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYyLjAuMTAwAAAAAAAAAAAAAAD/82TEABowfegLQxAAoEAE
     });
   });
 </script>
+
+<script>
+  const text = "[Зашифрованное сообщение] | Источник: Альянс Систем | Приоритет: Ультра-Класс Командир Илья. Связь с объектами класса N7 была внезапно прервана. Идентифицировано: утрата 5 контейнеров критической важности. Ваша задача — восстановить каждый из модулей. Вы получите сообщения по мере приближения к точкам активации. Подтвердите приказ. Да начнётся операция 'Протест системы'.";
+  const words = text.split(' ');
+  const target = document.getElementById('typed-text');
+  let index = 0;
+
+  function typeWord() {
+    if (index < words.length) {
+      target.innerHTML += words[index] + ' ';
+      index++;
+      setTimeout(typeWord, 1000); // 1 слово в секунду
+    }
+  }
+
+  window.onload = typeWord;
+</script>
+
 </body>
 </html>
