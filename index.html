@@ -127,10 +127,6 @@ function type() {
     target.innerHTML += char;
     index++;
 
-    if (char === '.'  char === '?'  char === '!') {
-      // После знаков конца предложения делаем перенос строки + небольшую паузу
-      target.innerHTML += '<br>';
-      setTimeout(type, 600); // пауза 600 мс после предложения
     } else {
       setTimeout(type, 100); // скорость 100 мс на букву
     }
