@@ -24,6 +24,7 @@
       border: 1px solid #4af;
       box-shadow: 0 0 10px #4af22f33;
       margin-top: 20px;
+      white-space: pre-wrap; /* чтобы переносы <br> работали */
     }
   </style>
   
@@ -32,6 +33,7 @@
   <div class="container">
     <h1>Mass Effect: Протест системы</h1>
     <p id="typed-text"></p>
+      </div>
 
 <div class="mission" id="lvl1">
   <div class="mission-title">УРОВЕНЬ 1: Биометрическая авторизация</div>
@@ -115,28 +117,28 @@ SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYyLjAuMTAwAAAAAAAAAAAAAAD/82TEABowfegLQxAAoEAE
   });
 </script>
 
-<script>
-  const text = "[Зашифрованное сообщение] | Источник: Альянс Систем | Приоритет: Ультра-Класс Командир Илья. Связь с объектами класса N7 была внезапно прервана. Идентифицировано: утрата 5 контейнеров критической важности. Ваша задача — восстановить каждый из модулей. Вы получите сообщения по мере приближения к точкам активации. Подтвердите приказ. Да начнётся операция 'Протест системы'.";
-const target = document.getElementById('typed-text');
-let index = 0;
+ <script>
+    const text = "[Зашифрованное сообщение] | Источник: Альянс Систем | Приоритет: Ультра-Класс Командир Илья. Связь с объектами класса N7 была внезапно прервана. Идентифицировано: утрата 5 контейнеров критической важности. Ваша задача — восстановить каждый из модулей. Вы получите сообщения по мере приближения к точкам активации. Подтвердите приказ. Да начнётся операция 'Протест системы'.";
 
-function type() {
-  if (index < text.length) {
-    const char = text.charAt(index);
-    target.innerHTML += char;
-    index++;
+    const target = document.getElementById('typed-text');
+    let index = 0;
 
-    if (char === '.'  char === '?'  char === '!') {
-      target.innerHTML += '<br>';
-      setTimeout(type, 600); // пауза после предложения
-    } else {
-      setTimeout(type, 100); // скорость печати по букве
+    function type() {
+      if (index < text.length) {
+        const char = text.charAt(index);
+        target.innerHTML += char;
+        index++;
+
+        if (char === '.'  char === '?'  char === '!') {
+          target.innerHTML += '<br>';
+          setTimeout(type, 600);
+        } else {
+          setTimeout(type, 100);
+        }
+      }
     }
-  }
-}
 
-window.onload = type;
-</script>
-
+    window.onload = type;
+  </script>
 </body>
 </html>
