@@ -117,19 +117,32 @@ SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYyLjAuMTAwAAAAAAAAAAAAAAD/82TEABowfegLQxAAoEAE
 
 <script>
   const text = "[Зашифрованное сообщение] | Источник: Альянс Систем | Приоритет: Ультра-Класс Командир Илья. Связь с объектами класса N7 была внезапно прервана. Идентифицировано: утрата 5 контейнеров критической важности. Ваша задача — восстановить каждый из модулей. Вы получите сообщения по мере приближения к точкам активации. Подтвердите приказ. Да начнётся операция 'Протест системы'.";
-  const words = text.split(' ');
-  const target = document.getElementById('typed-text');
-  let index = 0;
+const words = text.split(' ');
+const target = document.getElementById('typed-text');
+let wordIndex = 0;
+let charIndex = 0;
 
-  function typeWord() {
-    if (index < words.length) {
-      target.innerHTML += words[index] + ' ';
-      index++;
-      setTimeout(typeWord, 1000); // 1 слово в секунду
+function type() {
+  if (wordIndex < words.length) {
+    let currentWord = words[wordIndex];
+
+    if (charIndex < currentWord.length) {
+      target.innerHTML += currentWord.charAt(charIndex);
+      charIndex++;
+      // Скорость печати буквы: вычислим так, чтобы все буквы слова печатались за ~1 секунду
+      const speed = 1000 / currentWord.length;
+      setTimeout(type, speed);
+    } else {
+      // После слова ставим пробел и перенос строки
+      target.innerHTML += '<br>';
+      wordIndex++;
+      charIndex = 0;
+      setTimeout(type, 300); // Пауза после слова, чуть меньше 1 сек
     }
   }
+}
 
-  window.onload = typeWord;
+window.onload = type;
 </script>
 
 </body>
